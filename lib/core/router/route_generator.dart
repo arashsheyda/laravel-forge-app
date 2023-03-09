@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:forge/modules/about/screens/about_screen.dart';
+import 'package:forge/modules/admin/server/screens/server_detail_screen.dart';
 import 'package:forge/modules/app.dart';
 import 'package:forge/modules/auth/screens/login_screen.dart';
 import 'package:forge/modules/error/screens/not_found_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoutes(RouteSettings settings) {
-    // final arguments = settings.arguments;
+    final arguments = settings.arguments;
 
     switch (settings.name) {
       case '/':
@@ -15,6 +16,13 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => const AboutScreen());
       case '/auth/login':
         return CupertinoPageRoute(builder: (_) => const LoginScreen());
+
+      case '/server/detail':
+        if (arguments is int) {
+          return CupertinoPageRoute(
+              builder: (_) => ServerDetailScreen(serverId: arguments));
+        }
+        return notFound(settings);
 
       default:
         return notFound(settings);
