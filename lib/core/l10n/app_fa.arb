@@ -1,0 +1,22 @@
+{
+    "locale" : "fa",
+    "language": "فارسی",
+    "languages": "زبان ها",
+    "appName": "Laravel Forge",
+    "information": "اطلاعات",
+    "selectLang": "زبان خود را انتخاب کنید:",
+
+    "home": "خانه",
+    "about": "درباره ما",
+
+    "previos": "قبلی",
+    "share": "اشتراک گذاری",
+    "next": "بعدی",
+    "skip": "پرش",
+    "start": "شروع",
+
+
+    "error": "خطا",
+
+    "Example": "نمونه"
+}

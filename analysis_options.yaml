@@ -1,0 +1,19 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  errors:
+    prefer_single_quotes: error  
+    missing_required_param: error
+    prefer_const_declarations: warning
+    prefer_const_constructors: warning
+  
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+
+linter:
+  rules:
+    avoid_print: false
+    prefer_single_quotes: true
+    prefer_const_declarations: true
+    prefer_const_constructors: true

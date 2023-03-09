@@ -1,0 +1,76 @@
+name: forge
+description: PersianSDA Flutter starter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.2 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Localization
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
+
+  # UI
+  lottie: ^2.2.0
+  shimmer: ^2.0.0
+  flutter_svg: ^2.0.0+1
+  sliver_tools: ^0.2.9
+  cupertino_icons: ^1.0.5
+  carousel_slider: ^4.2.1
+  responsive_framework: ^0.2.0
+  
+
+  # State Management
+  flutter_bloc: ^8.1.2
+  hydrated_bloc: ^9.1.0
+
+  # Http
+  dio: ^4.0.6
+  webview_flutter: ^4.0.2
+
+  # Caching
+  cached_network_image: ^3.2.3
+
+  # Utils
+  share_plus: ^6.3.0
+  just_audio: ^0.9.31
+  url_launcher: ^6.1.9
+  path_provider: ^2.0.12
+  package_info_plus: ^3.0.2
+  on_screen_ruler: ^0.0.1
+
+  freezed: ^2.3.2
+  flutter_dotenv: ^5.0.2
+  json_annotation: ^4.8.0
+  freezed_annotation: ^2.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  
+  build_runner: ^2.3.3
+  flutter_lints: ^2.0.0
+  json_serializable: ^6.6.1
+  flutter_native_splash: ^2.2.14
+  flutter_launcher_icons: ^0.11.0
+
+flutter:
+  generate: true
+  uses-material-design: true
+
+  assets:
+    - .env
+    - assets/svg/
+    - assets/images/
+    - assets/svg/flag/
+    - assets/svg/icons/
+    - assets/svg/errors/
+    - assets/animations/

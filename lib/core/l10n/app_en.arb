@@ -1,0 +1,22 @@
+{
+    "locale" : "en",
+    "language": "English",
+    "languages": "Languages",
+    "appName": "Laravel Forge",
+    "information": "Information",
+    "selectLang": "Select your language:",
+
+    "home": "Home",
+    "about": "About",
+
+    "previos": "Previos",
+    "share": "Share",
+    "next": "Next",
+    "skip": "Skip",
+    "start": "Start",
+
+    
+    "error": "Error",
+
+    "example": "Example"
+}

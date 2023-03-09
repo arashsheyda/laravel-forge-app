@@ -1,0 +1,22 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/*{.g,.freezed}.dart": true,
+        ".dart_tool": true,
+        ".idea": true,
+        "test": true,
+        "build": true,
+        // while developing
+        "android": true,
+        "ios": true,
+        "linux": true,
+        "macos": true,
+        "web": true,
+        "windows": true,
+    },
+}
