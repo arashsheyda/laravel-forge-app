@@ -1,10 +1,100 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:forge/core/styles/borders.dart';
+import 'package:forge/core/styles/colors.dart';
+import 'package:forge/modules/admin/server/cubit/server_cubit.dart';
+import 'package:forge/modules/admin/server/widgets/server_card_item.dart';
 
 class ServerScreen extends StatelessWidget {
   const ServerScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: const Color(0xFFF7F7F7),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Servers',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    borderRadius: borderRadius,
+                    color: Colors.grey.withOpacity(0.3),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: borderRadius,
+                          color: Colors.transparent,
+                        ),
+                        child: IconButton(
+                          constraints: const BoxConstraints(
+                            minWidth: 0,
+                            minHeight: 0,
+                          ),
+                          onPressed: () {},
+                          icon: const Icon(Icons.list),
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: borderRadius,
+                          color: Colors.white,
+                        ),
+                        child: IconButton(
+                          onPressed: () {},
+                          constraints: const BoxConstraints(
+                            minWidth: 0,
+                            minHeight: 0,
+                          ),
+                          icon: const Icon(Icons.grid_view),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Expanded(
+              child: BlocBuilder<ServerCubit, ServerState>(
+                bloc: context.read<ServerCubit>()..fetchServers(),
+                builder: (context, state) {
+                  return GridView.builder(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    itemCount: state.servers.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 1.1,
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 20,
+                    ),
+                    itemBuilder: (context, index) {
+                      return ServerCardItem(server: state.servers[index]);
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
