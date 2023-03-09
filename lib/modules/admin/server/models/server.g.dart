@@ -8,7 +8,7 @@ part of 'server.dart';
 
 _$_Server _$$_ServerFromJson(Map<String, dynamic> json) => _$_Server(
       id: json['id'] as int,
-      credential_id: json['credential_id'] as String?,
+      credential_id: json['credential_id'] as int?,
       name: json['name'] as String,
       type: json['type'] as String,
       provider: json['provider'] as String,

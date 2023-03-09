@@ -10,7 +10,7 @@ class Server with _$Server {
   const Server._();
   const factory Server({
     required int id,
-    String? credential_id,
+    int? credential_id,
     required String name,
     required String type,
     required String provider,

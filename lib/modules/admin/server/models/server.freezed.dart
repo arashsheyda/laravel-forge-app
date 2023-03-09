@@ -21,7 +21,7 @@ Server _$ServerFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Server {
   int get id => throw _privateConstructorUsedError;
-  String? get credential_id => throw _privateConstructorUsedError;
+  int? get credential_id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   String get provider => throw _privateConstructorUsedError;
@@ -48,7 +48,7 @@ abstract class $ServerCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String? credential_id,
+      int? credential_id,
       String name,
       String type,
       String provider,
@@ -101,7 +101,7 @@ class _$ServerCopyWithImpl<$Res, $Val extends Server>
       credential_id: freezed == credential_id
           ? _value.credential_id
           : credential_id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -166,7 +166,7 @@ abstract class _$$_ServerCopyWith<$Res> implements $ServerCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String? credential_id,
+      int? credential_id,
       String name,
       String type,
       String provider,
@@ -216,7 +216,7 @@ class __$$_ServerCopyWithImpl<$Res>
       credential_id: freezed == credential_id
           ? _value.credential_id
           : credential_id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -300,7 +300,7 @@ class _$_Server extends _Server {
   @override
   final int id;
   @override
-  final String? credential_id;
+  final int? credential_id;
   @override
   final String name;
   @override
@@ -401,7 +401,7 @@ class _$_Server extends _Server {
 abstract class _Server extends Server {
   const factory _Server(
       {required final int id,
-      final String? credential_id,
+      final int? credential_id,
       required final String name,
       required final String type,
       required final String provider,
@@ -422,7 +422,7 @@ abstract class _Server extends Server {
   @override
   int get id;
   @override
-  String? get credential_id;
+  int? get credential_id;
   @override
   String get name;
   @override
