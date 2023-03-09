@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:forge/core/cubit/setting/setting_cubit.dart';
 import 'package:forge/core/cubit/navigation/navigation_cubit.dart';
+import 'package:forge/modules/admin/server/cubit/server_cubit.dart';
+import 'package:forge/modules/admin/server/cubit/server_repository.dart';
 
 import 'package:forge/modules/app.dart';
 import 'package:forge/core/styles/themes.dart';
@@ -45,6 +47,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<SettingCubit>(create: (_) => SettingCubit()),
         BlocProvider<NavigationCubit>(create: (_) => NavigationCubit()),
         BlocProvider<AuthCubit>(create: (_) => AuthCubit(AuthRepository())),
+        BlocProvider<ServerCubit>(
+            create: (_) => ServerCubit(ServerRepository())),
       ],
       child: BlocBuilder<SettingCubit, SettingState>(
         builder: (BuildContext context, SettingState state) {
