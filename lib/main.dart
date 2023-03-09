@@ -5,6 +5,9 @@ import 'package:forge/core/cubit/navigation/navigation_cubit.dart';
 import 'package:forge/modules/app.dart';
 import 'package:forge/core/styles/themes.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:forge/modules/auth/cubit/auth_cubit.dart';
+import 'package:forge/modules/auth/cubit/auth_repository.dart';
+import 'package:forge/modules/auth/screens/login_screen.dart';
 import 'package:on_screen_ruler/on_screen_ruler.dart';
 import 'package:forge/core/router/route_generator.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -41,6 +44,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<SettingCubit>(create: (_) => SettingCubit()),
         BlocProvider<NavigationCubit>(create: (_) => NavigationCubit()),
+        BlocProvider<AuthCubit>(create: (_) => AuthCubit(AuthRepository())),
       ],
       child: BlocBuilder<SettingCubit, SettingState>(
         builder: (BuildContext context, SettingState state) {
@@ -66,7 +70,16 @@ class MyApp extends StatelessWidget {
                 ),
               );
             },
-            home: state.onboarding ? const OnboardingScreen() : const App(),
+            home: state.onboarding
+                ? const OnboardingScreen()
+                : BlocBuilder<AuthCubit, AuthState>(
+                    bloc: context.read<AuthCubit>().setToken(),
+                    builder: (context, state) {
+                      return state.user != null
+                          ? const App()
+                          : const LoginScreen();
+                    },
+                  ),
             initialRoute: '/',
             title: 'PersianSDA Starter',
             theme: lightTheme,

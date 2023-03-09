@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:forge/modules/about/screens/about_screen.dart';
 import 'package:forge/modules/app.dart';
+import 'package:forge/modules/auth/screens/login_screen.dart';
 import 'package:forge/modules/error/screens/not_found_screen.dart';
 
 class RouteGenerator {
@@ -10,9 +10,11 @@ class RouteGenerator {
 
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => const App());
+        return CupertinoPageRoute(builder: (_) => const App());
       case '/about':
-        return MaterialPageRoute(builder: (_) => const AboutScreen());
+        return CupertinoPageRoute(builder: (_) => const AboutScreen());
+      case '/auth/login':
+        return CupertinoPageRoute(builder: (_) => const LoginScreen());
 
       default:
         return notFound(settings);
