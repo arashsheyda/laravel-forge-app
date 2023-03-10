@@ -10,10 +10,11 @@ class DeploymentCubit extends Cubit<DeploymentState> {
   DeploymentRepository repository;
   DeploymentCubit(this.repository) : super(DeploymentState.initial());
 
-  fetchSites({required SiteDetailArguments arguments}) async {
+  fetchScript({required SiteDetailArguments arguments}) async {
+    emit(state.copyWith(pending: true));
     try {
       final script = await repository.fetchScript(arguments: arguments);
-      emit(state.copyWith(script: script));
+      emit(state.copyWith(script: script, pending: false));
     } catch (e) {
       rethrow;
     }

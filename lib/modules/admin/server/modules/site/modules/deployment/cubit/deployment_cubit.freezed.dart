@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DeploymentState {
-  String? get script => throw _privateConstructorUsedError;
+  String get script => throw _privateConstructorUsedError;
+  bool get pending => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DeploymentStateCopyWith<DeploymentState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $DeploymentStateCopyWith<$Res> {
           DeploymentState value, $Res Function(DeploymentState) then) =
       _$DeploymentStateCopyWithImpl<$Res, DeploymentState>;
   @useResult
-  $Res call({String? script});
+  $Res call({String script, bool pending});
 }
 
 /// @nodoc
@@ -45,13 +46,18 @@ class _$DeploymentStateCopyWithImpl<$Res, $Val extends DeploymentState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? script = freezed,
+    Object? script = null,
+    Object? pending = null,
   }) {
     return _then(_value.copyWith(
-      script: freezed == script
+      script: null == script
           ? _value.script
           : script // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      pending: null == pending
+          ? _value.pending
+          : pending // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$_DeploymentStateCopyWith<$Res>
       __$$_DeploymentStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? script});
+  $Res call({String script, bool pending});
 }
 
 /// @nodoc
@@ -78,13 +84,18 @@ class __$$_DeploymentStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? script = freezed,
+    Object? script = null,
+    Object? pending = null,
   }) {
     return _then(_$_DeploymentState(
-      script: freezed == script
+      script: null == script
           ? _value.script
           : script // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      pending: null == pending
+          ? _value.pending
+          : pending // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -92,14 +103,16 @@ class __$$_DeploymentStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DeploymentState implements _DeploymentState {
-  const _$_DeploymentState({this.script});
+  const _$_DeploymentState({required this.script, required this.pending});
 
   @override
-  final String? script;
+  final String script;
+  @override
+  final bool pending;
 
   @override
   String toString() {
-    return 'DeploymentState(script: $script)';
+    return 'DeploymentState(script: $script, pending: $pending)';
   }
 
   @override
@@ -107,11 +120,12 @@ class _$_DeploymentState implements _DeploymentState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DeploymentState &&
-            (identical(other.script, script) || other.script == script));
+            (identical(other.script, script) || other.script == script) &&
+            (identical(other.pending, pending) || other.pending == pending));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, script);
+  int get hashCode => Object.hash(runtimeType, script, pending);
 
   @JsonKey(ignore: true)
   @override
@@ -121,10 +135,14 @@ class _$_DeploymentState implements _DeploymentState {
 }
 
 abstract class _DeploymentState implements DeploymentState {
-  const factory _DeploymentState({final String? script}) = _$_DeploymentState;
+  const factory _DeploymentState(
+      {required final String script,
+      required final bool pending}) = _$_DeploymentState;
 
   @override
-  String? get script;
+  String get script;
+  @override
+  bool get pending;
   @override
   @JsonKey(ignore: true)
   _$$_DeploymentStateCopyWith<_$_DeploymentState> get copyWith =>
