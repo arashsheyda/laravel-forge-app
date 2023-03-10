@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forge/modules/admin/server/modules/site/cubit/site_cubit.dart';
+import 'package:forge/modules/admin/server/modules/site/router/site_arguments.dart';
 
 class SiteScreen extends StatelessWidget {
   final int serverId;
@@ -29,6 +30,14 @@ class SiteScreen extends StatelessWidget {
               if (!state.pending) {
                 final site = state.sites[index];
                 return GestureDetector(
+                  onTap: () => Navigator.pushNamed(
+                    context,
+                    '/server/detail/site/detail',
+                    arguments: SiteDetailArguments(
+                      serverId: serverId,
+                      siteId: site.id,
+                    ),
+                  ),
                   child: Card(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

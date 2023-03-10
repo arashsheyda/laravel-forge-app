@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:forge/modules/about/screens/about_screen.dart';
 import 'package:forge/modules/admin/server/modules/database/screens/database_screen.dart';
+import 'package:forge/modules/admin/server/modules/site/router/site_arguments.dart';
+import 'package:forge/modules/admin/server/modules/site/screens/site_detail_screen.dart';
 import 'package:forge/modules/admin/server/modules/site/screens/site_screen.dart';
 import 'package:forge/modules/admin/server/screens/server_detail_screen.dart';
 import 'package:forge/modules/app.dart';
@@ -37,6 +39,13 @@ class RouteGenerator {
         if (arguments is int) {
           return CupertinoPageRoute(
               builder: (_) => SiteScreen(serverId: arguments));
+        }
+        return notFound(settings);
+
+      case '/server/detail/site/detail':
+        if (arguments is SiteDetailArguments) {
+          return CupertinoPageRoute(
+              builder: (_) => SiteDetailScreen(arguments: arguments));
         }
         return notFound(settings);
 
