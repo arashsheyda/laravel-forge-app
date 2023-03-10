@@ -11,8 +11,9 @@ class DatabaseCubit extends Cubit<DatabaseState> {
 
   Future<void> fetchAll({required int serverId}) async {
     try {
+      emit(state.copyWith(pending: true));
       final databases = await repository.fetchAll(serverId: serverId);
-      emit(state.copyWith(databases: databases));
+      emit(state.copyWith(databases: databases, pending: false));
     } catch (e) {
       rethrow;
     }

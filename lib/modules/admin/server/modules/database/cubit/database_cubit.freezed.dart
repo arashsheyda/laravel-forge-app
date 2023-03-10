@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$DatabaseState {
   List<dynamic> get databases => throw _privateConstructorUsedError;
+  bool get pending => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DatabaseStateCopyWith<DatabaseState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $DatabaseStateCopyWith<$Res> {
           DatabaseState value, $Res Function(DatabaseState) then) =
       _$DatabaseStateCopyWithImpl<$Res, DatabaseState>;
   @useResult
-  $Res call({List<dynamic> databases});
+  $Res call({List<dynamic> databases, bool pending});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$DatabaseStateCopyWithImpl<$Res, $Val extends DatabaseState>
   @override
   $Res call({
     Object? databases = null,
+    Object? pending = null,
   }) {
     return _then(_value.copyWith(
       databases: null == databases
           ? _value.databases
           : databases // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
+      pending: null == pending
+          ? _value.pending
+          : pending // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$_DatabaseStateCopyWith<$Res>
       __$$_DatabaseStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<dynamic> databases});
+  $Res call({List<dynamic> databases, bool pending});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$_DatabaseStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? databases = null,
+    Object? pending = null,
   }) {
     return _then(_$_DatabaseState(
       databases: null == databases
           ? _value._databases
           : databases // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
+      pending: null == pending
+          ? _value.pending
+          : pending // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -92,7 +103,8 @@ class __$$_DatabaseStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DatabaseState implements _DatabaseState {
-  const _$_DatabaseState({required final List<dynamic> databases})
+  const _$_DatabaseState(
+      {required final List<dynamic> databases, required this.pending})
       : _databases = databases;
 
   final List<dynamic> _databases;
@@ -104,8 +116,11 @@ class _$_DatabaseState implements _DatabaseState {
   }
 
   @override
+  final bool pending;
+
+  @override
   String toString() {
-    return 'DatabaseState(databases: $databases)';
+    return 'DatabaseState(databases: $databases, pending: $pending)';
   }
 
   @override
@@ -114,12 +129,13 @@ class _$_DatabaseState implements _DatabaseState {
         (other.runtimeType == runtimeType &&
             other is _$_DatabaseState &&
             const DeepCollectionEquality()
-                .equals(other._databases, _databases));
+                .equals(other._databases, _databases) &&
+            (identical(other.pending, pending) || other.pending == pending));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_databases));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_databases), pending);
 
   @JsonKey(ignore: true)
   @override
@@ -129,11 +145,14 @@ class _$_DatabaseState implements _DatabaseState {
 }
 
 abstract class _DatabaseState implements DatabaseState {
-  const factory _DatabaseState({required final List<dynamic> databases}) =
-      _$_DatabaseState;
+  const factory _DatabaseState(
+      {required final List<dynamic> databases,
+      required final bool pending}) = _$_DatabaseState;
 
   @override
   List<dynamic> get databases;
+  @override
+  bool get pending;
   @override
   @JsonKey(ignore: true)
   _$$_DatabaseStateCopyWith<_$_DatabaseState> get copyWith =>

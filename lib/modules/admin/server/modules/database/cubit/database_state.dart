@@ -4,9 +4,11 @@ part of 'database_cubit.dart';
 class DatabaseState with _$DatabaseState {
   const factory DatabaseState({
     required List databases,
+    required bool pending,
   }) = _DatabaseState;
 
   factory DatabaseState.initial() => const DatabaseState(
         databases: [],
+        pending: true,
       );
 }

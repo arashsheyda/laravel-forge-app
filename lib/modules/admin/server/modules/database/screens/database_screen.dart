@@ -15,6 +15,11 @@ class DatabaseScreen extends StatelessWidget {
       body: BlocBuilder<DatabaseCubit, DatabaseState>(
         bloc: context.read<DatabaseCubit>()..fetchAll(serverId: serverId),
         builder: (context, state) {
+          if (state.pending) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
           return ListView(
             padding: const EdgeInsets.all(16),
             children: [
