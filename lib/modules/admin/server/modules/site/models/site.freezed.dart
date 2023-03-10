@@ -23,7 +23,7 @@ mixin _$Site {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
-  String get directroy => throw _privateConstructorUsedError;
+  String get directory => throw _privateConstructorUsedError;
   bool get wildcards => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   String? get repository => throw _privateConstructorUsedError;
@@ -35,6 +35,7 @@ mixin _$Site {
   String? get app => throw _privateConstructorUsedError;
   String? get app_status => throw _privateConstructorUsedError;
   String get php_version => throw _privateConstructorUsedError;
+  String? get deployment_status => throw _privateConstructorUsedError;
   String get deployment_url => throw _privateConstructorUsedError;
   String get created_at => throw _privateConstructorUsedError;
 
@@ -52,7 +53,7 @@ abstract class $SiteCopyWith<$Res> {
       {int id,
       String name,
       String username,
-      String directroy,
+      String directory,
       bool wildcards,
       String status,
       String? repository,
@@ -64,6 +65,7 @@ abstract class $SiteCopyWith<$Res> {
       String? app,
       String? app_status,
       String php_version,
+      String? deployment_status,
       String deployment_url,
       String created_at});
 }
@@ -84,7 +86,7 @@ class _$SiteCopyWithImpl<$Res, $Val extends Site>
     Object? id = null,
     Object? name = null,
     Object? username = null,
-    Object? directroy = null,
+    Object? directory = null,
     Object? wildcards = null,
     Object? status = null,
     Object? repository = freezed,
@@ -96,6 +98,7 @@ class _$SiteCopyWithImpl<$Res, $Val extends Site>
     Object? app = freezed,
     Object? app_status = freezed,
     Object? php_version = null,
+    Object? deployment_status = freezed,
     Object? deployment_url = null,
     Object? created_at = null,
   }) {
@@ -112,9 +115,9 @@ class _$SiteCopyWithImpl<$Res, $Val extends Site>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
-      directroy: null == directroy
-          ? _value.directroy
-          : directroy // ignore: cast_nullable_to_non_nullable
+      directory: null == directory
+          ? _value.directory
+          : directory // ignore: cast_nullable_to_non_nullable
               as String,
       wildcards: null == wildcards
           ? _value.wildcards
@@ -160,6 +163,10 @@ class _$SiteCopyWithImpl<$Res, $Val extends Site>
           ? _value.php_version
           : php_version // ignore: cast_nullable_to_non_nullable
               as String,
+      deployment_status: freezed == deployment_status
+          ? _value.deployment_status
+          : deployment_status // ignore: cast_nullable_to_non_nullable
+              as String?,
       deployment_url: null == deployment_url
           ? _value.deployment_url
           : deployment_url // ignore: cast_nullable_to_non_nullable
@@ -182,7 +189,7 @@ abstract class _$$_SiteCopyWith<$Res> implements $SiteCopyWith<$Res> {
       {int id,
       String name,
       String username,
-      String directroy,
+      String directory,
       bool wildcards,
       String status,
       String? repository,
@@ -194,6 +201,7 @@ abstract class _$$_SiteCopyWith<$Res> implements $SiteCopyWith<$Res> {
       String? app,
       String? app_status,
       String php_version,
+      String? deployment_status,
       String deployment_url,
       String created_at});
 }
@@ -210,7 +218,7 @@ class __$$_SiteCopyWithImpl<$Res> extends _$SiteCopyWithImpl<$Res, _$_Site>
     Object? id = null,
     Object? name = null,
     Object? username = null,
-    Object? directroy = null,
+    Object? directory = null,
     Object? wildcards = null,
     Object? status = null,
     Object? repository = freezed,
@@ -222,6 +230,7 @@ class __$$_SiteCopyWithImpl<$Res> extends _$SiteCopyWithImpl<$Res, _$_Site>
     Object? app = freezed,
     Object? app_status = freezed,
     Object? php_version = null,
+    Object? deployment_status = freezed,
     Object? deployment_url = null,
     Object? created_at = null,
   }) {
@@ -238,9 +247,9 @@ class __$$_SiteCopyWithImpl<$Res> extends _$SiteCopyWithImpl<$Res, _$_Site>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
-      directroy: null == directroy
-          ? _value.directroy
-          : directroy // ignore: cast_nullable_to_non_nullable
+      directory: null == directory
+          ? _value.directory
+          : directory // ignore: cast_nullable_to_non_nullable
               as String,
       wildcards: null == wildcards
           ? _value.wildcards
@@ -286,6 +295,10 @@ class __$$_SiteCopyWithImpl<$Res> extends _$SiteCopyWithImpl<$Res, _$_Site>
           ? _value.php_version
           : php_version // ignore: cast_nullable_to_non_nullable
               as String,
+      deployment_status: freezed == deployment_status
+          ? _value.deployment_status
+          : deployment_status // ignore: cast_nullable_to_non_nullable
+              as String?,
       deployment_url: null == deployment_url
           ? _value.deployment_url
           : deployment_url // ignore: cast_nullable_to_non_nullable
@@ -305,7 +318,7 @@ class _$_Site extends _Site {
       {required this.id,
       required this.name,
       required this.username,
-      required this.directroy,
+      required this.directory,
       required this.wildcards,
       required this.status,
       this.repository,
@@ -317,6 +330,7 @@ class _$_Site extends _Site {
       this.app,
       this.app_status,
       required this.php_version,
+      this.deployment_status,
       required this.deployment_url,
       required this.created_at})
       : super._();
@@ -330,7 +344,7 @@ class _$_Site extends _Site {
   @override
   final String username;
   @override
-  final String directroy;
+  final String directory;
   @override
   final bool wildcards;
   @override
@@ -354,13 +368,15 @@ class _$_Site extends _Site {
   @override
   final String php_version;
   @override
+  final String? deployment_status;
+  @override
   final String deployment_url;
   @override
   final String created_at;
 
   @override
   String toString() {
-    return 'Site(id: $id, name: $name, username: $username, directroy: $directroy, wildcards: $wildcards, status: $status, repository: $repository, repository_provider: $repository_provider, repository_branch: $repository_branch, repository_status: $repository_status, quick_deploy: $quick_deploy, project_type: $project_type, app: $app, app_status: $app_status, php_version: $php_version, deployment_url: $deployment_url, created_at: $created_at)';
+    return 'Site(id: $id, name: $name, username: $username, directory: $directory, wildcards: $wildcards, status: $status, repository: $repository, repository_provider: $repository_provider, repository_branch: $repository_branch, repository_status: $repository_status, quick_deploy: $quick_deploy, project_type: $project_type, app: $app, app_status: $app_status, php_version: $php_version, deployment_status: $deployment_status, deployment_url: $deployment_url, created_at: $created_at)';
   }
 
   @override
@@ -372,8 +388,8 @@ class _$_Site extends _Site {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.username, username) ||
                 other.username == username) &&
-            (identical(other.directroy, directroy) ||
-                other.directroy == directroy) &&
+            (identical(other.directory, directory) ||
+                other.directory == directory) &&
             (identical(other.wildcards, wildcards) ||
                 other.wildcards == wildcards) &&
             (identical(other.status, status) || other.status == status) &&
@@ -394,6 +410,8 @@ class _$_Site extends _Site {
                 other.app_status == app_status) &&
             (identical(other.php_version, php_version) ||
                 other.php_version == php_version) &&
+            (identical(other.deployment_status, deployment_status) ||
+                other.deployment_status == deployment_status) &&
             (identical(other.deployment_url, deployment_url) ||
                 other.deployment_url == deployment_url) &&
             (identical(other.created_at, created_at) ||
@@ -407,7 +425,7 @@ class _$_Site extends _Site {
       id,
       name,
       username,
-      directroy,
+      directory,
       wildcards,
       status,
       repository,
@@ -419,6 +437,7 @@ class _$_Site extends _Site {
       app,
       app_status,
       php_version,
+      deployment_status,
       deployment_url,
       created_at);
 
@@ -441,7 +460,7 @@ abstract class _Site extends Site {
       {required final int id,
       required final String name,
       required final String username,
-      required final String directroy,
+      required final String directory,
       required final bool wildcards,
       required final String status,
       final String? repository,
@@ -453,6 +472,7 @@ abstract class _Site extends Site {
       final String? app,
       final String? app_status,
       required final String php_version,
+      final String? deployment_status,
       required final String deployment_url,
       required final String created_at}) = _$_Site;
   const _Site._() : super._();
@@ -466,7 +486,7 @@ abstract class _Site extends Site {
   @override
   String get username;
   @override
-  String get directroy;
+  String get directory;
   @override
   bool get wildcards;
   @override
@@ -489,6 +509,8 @@ abstract class _Site extends Site {
   String? get app_status;
   @override
   String get php_version;
+  @override
+  String? get deployment_status;
   @override
   String get deployment_url;
   @override

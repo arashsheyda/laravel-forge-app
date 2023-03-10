@@ -12,7 +12,7 @@ class Site with _$Site {
     required int id,
     required String name,
     required String username,
-    required String directroy,
+    required String directory,
     required bool wildcards,
     required String status,
     String? repository,
@@ -24,6 +24,7 @@ class Site with _$Site {
     String? app,
     String? app_status,
     required String php_version,
+    String? deployment_status,
     required String deployment_url,
     required String created_at,
   }) = _Site;

@@ -10,7 +10,7 @@ _$_Site _$$_SiteFromJson(Map<String, dynamic> json) => _$_Site(
       id: json['id'] as int,
       name: json['name'] as String,
       username: json['username'] as String,
-      directroy: json['directroy'] as String,
+      directory: json['directory'] as String,
       wildcards: json['wildcards'] as bool,
       status: json['status'] as String,
       repository: json['repository'] as String?,
@@ -22,6 +22,7 @@ _$_Site _$$_SiteFromJson(Map<String, dynamic> json) => _$_Site(
       app: json['app'] as String?,
       app_status: json['app_status'] as String?,
       php_version: json['php_version'] as String,
+      deployment_status: json['deployment_status'] as String?,
       deployment_url: json['deployment_url'] as String,
       created_at: json['created_at'] as String,
     );
@@ -30,7 +31,7 @@ Map<String, dynamic> _$$_SiteToJson(_$_Site instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'username': instance.username,
-      'directroy': instance.directroy,
+      'directory': instance.directory,
       'wildcards': instance.wildcards,
       'status': instance.status,
       'repository': instance.repository,
@@ -42,6 +43,7 @@ Map<String, dynamic> _$$_SiteToJson(_$_Site instance) => <String, dynamic>{
       'app': instance.app,
       'app_status': instance.app_status,
       'php_version': instance.php_version,
+      'deployment_status': instance.deployment_status,
       'deployment_url': instance.deployment_url,
       'created_at': instance.created_at,
     };

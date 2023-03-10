@@ -5,6 +5,8 @@ import 'package:forge/modules/admin/server/cubit/server_cubit.dart';
 import 'package:forge/modules/admin/server/cubit/server_repository.dart';
 import 'package:forge/modules/admin/server/modules/database/cubit/database_cubit.dart';
 import 'package:forge/modules/admin/server/modules/database/cubit/database_repository.dart';
+import 'package:forge/modules/admin/server/modules/site/cubit/site_cubit.dart';
+import 'package:forge/modules/admin/server/modules/site/cubit/site_repository.dart';
 
 import 'package:forge/modules/app.dart';
 import 'package:forge/core/styles/themes.dart';
@@ -53,6 +55,7 @@ class MyApp extends StatelessWidget {
             create: (_) => ServerCubit(ServerRepository())),
         BlocProvider<DatabaseCubit>(
             create: (_) => DatabaseCubit(DatabaseRepository())),
+        BlocProvider<SiteCubit>(create: (_) => SiteCubit(SiteRepository())),
       ],
       child: BlocBuilder<SettingCubit, SettingState>(
         builder: (BuildContext context, SettingState state) {
