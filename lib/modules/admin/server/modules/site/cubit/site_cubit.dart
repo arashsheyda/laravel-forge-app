@@ -11,7 +11,7 @@ class SiteCubit extends Cubit<SiteState> {
   SiteCubit(this.repository) : super(SiteState.initial());
 
   fetchSites({required int serverId}) async {
-    state.copyWith(pending: true);
+    emit(state.copyWith(pending: true));
     try {
       final sites = await repository.fetchAll(serverId: serverId);
       emit(state.copyWith(sites: sites, pending: false));
