@@ -42,6 +42,33 @@ class ServerDetailScreen extends StatelessWidget {
               ),
             ),
           ),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/server/detail/site',
+                arguments: serverId,
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: const Color(0xFF8EDAFE),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 100,
+                    child: Image.network(
+                      'https://cdn-icons-png.flaticon.com/512/2859/2859732.png',
+                      color: const Color(0xFF012458),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
