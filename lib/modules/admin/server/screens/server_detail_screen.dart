@@ -20,7 +20,8 @@ class ServerDetailScreen extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/server/detail/database');
+              Navigator.pushNamed(context, '/server/detail/database',
+                  arguments: serverId);
             },
             child: Container(
               decoration: BoxDecoration(
