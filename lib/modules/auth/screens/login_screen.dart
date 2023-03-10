@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:forge/core/styles/borders.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forge/modules/auth/cubit/auth_cubit.dart';
@@ -19,15 +20,26 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(50),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              'assets/images/background.png',
+            ),
+            opacity: 0.5,
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                SizedBox(
+                  width: 100,
+                  child: Image.asset('assets/images/logo.png'),
+                ),
                 const Text(
-                  'Welcome to Forge !',
+                  'Welcome to Laravel Forge!',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -44,8 +56,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextFormField(
                   controller: _tokenController,
                   decoration: InputDecoration(
-                    labelText: 'Token',
-                    fillColor: Colors.grey.withOpacity(0.1),
+                    labelText: 'API Token',
+                    prefixIcon: const Icon(Icons.lock),
                     filled: true,
                     border: OutlineInputBorder(
                       borderRadius: borderRadius,
