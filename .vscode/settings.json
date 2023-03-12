@@ -12,7 +12,7 @@
         "test": true,
         "build": true,
         // while developing
-        "android": true,
+        // "android": true,
         "ios": true,
         "linux": true,
         "macos": true,
