@@ -83,8 +83,8 @@ class ServerDetailScreen extends StatelessWidget {
                 },
               ),
               CardItem(
-                title: 'Webiste',
-                subtitle: 'Manage your website',
+                title: 'Sites',
+                subtitle: 'Manage your websites',
                 titleColor: Colors.white,
                 subTitleColor: Colors.white,
                 leading: Image.network(
