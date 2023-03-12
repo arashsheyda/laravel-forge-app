@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "forge",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "forge (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "forge (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "forge (debug mode)",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5554",
+            "flutterMode": "debug"
+        }
+    ]
+}

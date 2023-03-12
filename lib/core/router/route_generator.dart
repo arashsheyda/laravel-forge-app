@@ -6,6 +6,7 @@ import 'package:forge/modules/admin/server/modules/site/router/site_arguments.da
 import 'package:forge/modules/admin/server/modules/site/screens/site_detail_screen.dart';
 import 'package:forge/modules/admin/server/modules/site/screens/site_screen.dart';
 import 'package:forge/modules/admin/server/screens/server_detail_screen.dart';
+import 'package:forge/modules/admin/user/screens/user_screen.dart';
 import 'package:forge/modules/app.dart';
 import 'package:forge/modules/auth/screens/login_screen.dart';
 import 'package:forge/modules/error/screens/not_found_screen.dart';
@@ -21,6 +22,9 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => const AboutScreen());
       case '/auth/login':
         return CupertinoPageRoute(builder: (_) => const LoginScreen());
+
+      case '/user':
+        return CupertinoPageRoute(builder: (_) => const UserScreen());
 
       case '/server/detail':
         if (arguments is int) {
