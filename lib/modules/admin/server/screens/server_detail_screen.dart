@@ -7,8 +7,35 @@ class ServerDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Server $serverId'),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(300),
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                // Color(0xFF64ddc9),
+                Color(0xFF18b69b),
+                Color(0xFF125251),
+              ],
+            ),
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(25),
+              bottomRight: Radius.circular(25),
+            ),
+          ),
+          child: Stack(
+            children: [
+              AppBar(
+                backgroundColor: Colors.transparent,
+                title: Text('Server $serverId'),
+                elevation: 0,
+              ),
+              // TODO: add monitoring
+            ],
+          ),
+        ),
       ),
       body: GridView(
         padding: const EdgeInsets.all(20),
@@ -25,7 +52,7 @@ class ServerDetailScreen extends StatelessWidget {
             },
             child: Container(
               decoration: BoxDecoration(
-                color: const Color(0xFF8EDAFE),
+                color: const Color(0xFF18b69b),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Column(
@@ -35,7 +62,7 @@ class ServerDetailScreen extends StatelessWidget {
                     height: 100,
                     child: Image.network(
                       'https://cdn-icons-png.flaticon.com/512/2232/2232189.png',
-                      color: const Color(0xFF012458),
+                      color: Colors.white,
                     ),
                   ),
                 ],
@@ -52,7 +79,7 @@ class ServerDetailScreen extends StatelessWidget {
             },
             child: Container(
               decoration: BoxDecoration(
-                color: const Color(0xFF8EDAFE),
+                color: const Color(0xFF18b69b),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Column(
@@ -62,7 +89,7 @@ class ServerDetailScreen extends StatelessWidget {
                     height: 100,
                     child: Image.network(
                       'https://cdn-icons-png.flaticon.com/512/2859/2859732.png',
-                      color: const Color(0xFF012458),
+                      color: Colors.white,
                     ),
                   ),
                 ],
