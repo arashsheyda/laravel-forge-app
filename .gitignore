@@ -45,3 +45,6 @@ app.*.map.json
 
 .env
 .vscode/launch.json
+
+*.g.dart
+*.freezed.dart
