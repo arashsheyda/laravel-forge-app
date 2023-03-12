@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:forge/core/shared/widgets/card_item.dart';
 import 'package:forge/modules/admin/server/cubit/server_cubit.dart';
 
 class ServerDetailScreen extends StatelessWidget {
@@ -27,9 +28,11 @@ class ServerDetailScreen extends StatelessWidget {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
+                    Color(0xFF1f1f1f),
+                    Color(0xFF010101),
                     // Color(0xFF64ddc9),
-                    Color(0xFF18b69b),
-                    Color(0xFF125251),
+                    // Color(0xFF18b69b),
+                    // Color(0xFF125251),
                   ],
                 ),
                 borderRadius: BorderRadius.only(
@@ -57,31 +60,39 @@ class ServerDetailScreen extends StatelessWidget {
               mainAxisSpacing: 10,
             ),
             children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, '/server/detail/database',
-                      arguments: serverId);
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF18b69b),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: 100,
-                        child: Image.network(
-                          'https://cdn-icons-png.flaticon.com/512/2232/2232189.png',
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
+              CardItem(
+                title: 'Database',
+                subtitle: 'Manage your databases',
+                titleColor: Colors.white,
+                subTitleColor: Colors.white,
+                leading: Image.network(
+                  'https://cdn-icons-png.flaticon.com/512/2232/2232189.png',
+                  color: Colors.white,
                 ),
+                gradient: const [
+                  Color(0xFFff9600),
+                  Color(0xFFfe3500),
+                ],
+                splashColor: Colors.amber,
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/server/detail/database',
+                    arguments: serverId,
+                  );
+                },
               ),
-              GestureDetector(
+              CardItem(
+                title: 'Webiste',
+                subtitle: 'Manage your website',
+                titleColor: Colors.white,
+                subTitleColor: Colors.white,
+                leading: Image.network(
+                  'https://cdn-icons-png.flaticon.com/512/2859/2859732.png',
+                  color: Colors.white,
+                ),
+                gradient: const [Color(0xFF013c8b), Color(0xFF02a2d7)],
+                splashColor: Colors.cyan,
                 onTap: () {
                   Navigator.pushNamed(
                     context,
@@ -89,24 +100,6 @@ class ServerDetailScreen extends StatelessWidget {
                     arguments: serverId,
                   );
                 },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF18b69b),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: 100,
-                        child: Image.network(
-                          'https://cdn-icons-png.flaticon.com/512/2859/2859732.png',
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
               ),
             ],
           ),

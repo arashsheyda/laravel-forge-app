@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forge/core/styles/borders.dart';
-import 'package:forge/core/styles/colors.dart';
+import 'package:forge/core/shared/widgets/card_item.dart';
 import 'package:forge/modules/admin/server/cubit/server_cubit.dart';
-import 'package:forge/modules/admin/server/widgets/server_card_item.dart';
 
 class ServerScreen extends StatelessWidget {
   const ServerScreen({super.key});
@@ -86,7 +85,17 @@ class ServerScreen extends StatelessWidget {
                       mainAxisSpacing: 20,
                     ),
                     itemBuilder: (context, index) {
-                      return ServerCardItem(server: state.servers[index]);
+                      var server = state.servers[index];
+                      return CardItem(
+                        title: state.servers[index].name,
+                        leading: Image.network(
+                          'https://cdn-icons-png.flaticon.com/512/188/188109.png',
+                        ),
+                        subtitle: server.region,
+                        description: server.ip_address,
+                        onTap: () => Navigator.of(context)
+                            .pushNamed('/server/detail', arguments: server.id),
+                      );
                     },
                   );
                 },
