@@ -4,6 +4,7 @@
         {
             "name": "forge",
             "request": "launch",
+            "deviceId": "windows",
             "type": "dart"
         },
         {
