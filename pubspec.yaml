@@ -46,6 +46,9 @@ dependencies:
   package_info_plus: ^3.0.2
   on_screen_ruler: ^0.0.1
 
+  flutter_highlight: ^0.7.0
+
+
   freezed: ^2.3.2
   flutter_dotenv: ^5.0.2
   json_annotation: ^4.8.0

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:forge/modules/admin/server/modules/site/modules/deployment/cubit/deployment_cubit.dart';
+import 'package:flutter_highlight/themes/github.dart';
 import 'package:forge/modules/admin/server/modules/site/router/site_arguments.dart';
+import 'package:forge/modules/admin/server/modules/site/modules/deployment/cubit/deployment_cubit.dart';
+import 'package:flutter_highlight/flutter_highlight.dart';
 
 class DeploymentScreen extends StatefulWidget {
   final SiteDetailArguments arguments;
@@ -47,8 +49,16 @@ class _DeploymentScreenState extends State<DeploymentScreen> {
                   }
                   return Container(
                     padding: const EdgeInsets.all(10),
-                    child: Text(
-                        state.script.isNotEmpty ? state.script : 'no script'),
+                    child: HighlightView(
+                      state.script.isNotEmpty ? state.script : 'no script',
+                      language: 'bash',
+                      theme: githubTheme,
+                      padding: const EdgeInsets.all(10),
+                      textStyle: const TextStyle(
+                        fontFamily: 'monospace',
+                        fontSize: 12,
+                      ),
+                    ),
                   );
                 },
               ),
