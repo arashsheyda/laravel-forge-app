@@ -4,6 +4,7 @@ part of 'server_cubit.dart';
 class ServerState with _$ServerState {
   const factory ServerState({
     required List<Server> servers,
+    Server? server,
     required bool laoding,
   }) = _ServerState;
 

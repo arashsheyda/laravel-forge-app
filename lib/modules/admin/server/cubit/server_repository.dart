@@ -13,4 +13,15 @@ class ServerRepository {
       rethrow;
     }
   }
+
+  Future fetchOne({required int serverId}) async {
+    try {
+      final response = await ApiService().dio.get('/servers/$serverId');
+      final servers = response.data['server'];
+      return Server.fromJson(servers);
+      // ignore: unused_catch_clause
+    } on DioError catch (e) {
+      rethrow;
+    }
+  }
 }

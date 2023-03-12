@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ServerState {
   List<Server> get servers => throw _privateConstructorUsedError;
+  Server? get server => throw _privateConstructorUsedError;
   bool get laoding => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +31,9 @@ abstract class $ServerStateCopyWith<$Res> {
           ServerState value, $Res Function(ServerState) then) =
       _$ServerStateCopyWithImpl<$Res, ServerState>;
   @useResult
-  $Res call({List<Server> servers, bool laoding});
+  $Res call({List<Server> servers, Server? server, bool laoding});
+
+  $ServerCopyWith<$Res>? get server;
 }
 
 /// @nodoc
@@ -47,6 +50,7 @@ class _$ServerStateCopyWithImpl<$Res, $Val extends ServerState>
   @override
   $Res call({
     Object? servers = null,
+    Object? server = freezed,
     Object? laoding = null,
   }) {
     return _then(_value.copyWith(
@@ -54,11 +58,27 @@ class _$ServerStateCopyWithImpl<$Res, $Val extends ServerState>
           ? _value.servers
           : servers // ignore: cast_nullable_to_non_nullable
               as List<Server>,
+      server: freezed == server
+          ? _value.server
+          : server // ignore: cast_nullable_to_non_nullable
+              as Server?,
       laoding: null == laoding
           ? _value.laoding
           : laoding // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ServerCopyWith<$Res>? get server {
+    if (_value.server == null) {
+      return null;
+    }
+
+    return $ServerCopyWith<$Res>(_value.server!, (value) {
+      return _then(_value.copyWith(server: value) as $Val);
+    });
   }
 }
 
@@ -70,7 +90,10 @@ abstract class _$$_ServerStateCopyWith<$Res>
       __$$_ServerStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Server> servers, bool laoding});
+  $Res call({List<Server> servers, Server? server, bool laoding});
+
+  @override
+  $ServerCopyWith<$Res>? get server;
 }
 
 /// @nodoc
@@ -85,6 +108,7 @@ class __$$_ServerStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? servers = null,
+    Object? server = freezed,
     Object? laoding = null,
   }) {
     return _then(_$_ServerState(
@@ -92,6 +116,10 @@ class __$$_ServerStateCopyWithImpl<$Res>
           ? _value._servers
           : servers // ignore: cast_nullable_to_non_nullable
               as List<Server>,
+      server: freezed == server
+          ? _value.server
+          : server // ignore: cast_nullable_to_non_nullable
+              as Server?,
       laoding: null == laoding
           ? _value.laoding
           : laoding // ignore: cast_nullable_to_non_nullable
@@ -104,7 +132,7 @@ class __$$_ServerStateCopyWithImpl<$Res>
 
 class _$_ServerState implements _ServerState {
   const _$_ServerState(
-      {required final List<Server> servers, required this.laoding})
+      {required final List<Server> servers, this.server, required this.laoding})
       : _servers = servers;
 
   final List<Server> _servers;
@@ -116,11 +144,13 @@ class _$_ServerState implements _ServerState {
   }
 
   @override
+  final Server? server;
+  @override
   final bool laoding;
 
   @override
   String toString() {
-    return 'ServerState(servers: $servers, laoding: $laoding)';
+    return 'ServerState(servers: $servers, server: $server, laoding: $laoding)';
   }
 
   @override
@@ -129,12 +159,13 @@ class _$_ServerState implements _ServerState {
         (other.runtimeType == runtimeType &&
             other is _$_ServerState &&
             const DeepCollectionEquality().equals(other._servers, _servers) &&
+            (identical(other.server, server) || other.server == server) &&
             (identical(other.laoding, laoding) || other.laoding == laoding));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_servers), laoding);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_servers), server, laoding);
 
   @JsonKey(ignore: true)
   @override
@@ -146,10 +177,13 @@ class _$_ServerState implements _ServerState {
 abstract class _ServerState implements ServerState {
   const factory _ServerState(
       {required final List<Server> servers,
+      final Server? server,
       required final bool laoding}) = _$_ServerState;
 
   @override
   List<Server> get servers;
+  @override
+  Server? get server;
   @override
   bool get laoding;
   @override

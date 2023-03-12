@@ -18,4 +18,15 @@ class ServerCubit extends Cubit<ServerState> {
       rethrow;
     }
   }
+
+  fetchServer({required int serverId}) async {
+    if (state.server?.id == serverId) return;
+    emit(state.copyWith(server: null));
+    try {
+      final server = await repository.fetchOne(serverId: serverId);
+      emit(state.copyWith(server: server));
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
