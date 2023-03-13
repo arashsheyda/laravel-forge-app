@@ -13,7 +13,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppBarWidget({
     super.key,
     required this.title,
-    this.height = 50,
+    this.height = 57,
     this.child,
     this.actions,
     this.leading,
@@ -42,8 +42,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
           ),
           borderRadius: borderRadius,
         ),
-        child: Stack(
-          alignment: Alignment.center,
+        child: Column(
           children: [
             AppBar(
               backgroundColor: Colors.transparent,
