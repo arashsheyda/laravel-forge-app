@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forge/core/shared/appbar.dart';
+import 'package:forge/core/shared/widgets/card_item.dart';
 import 'package:forge/modules/admin/server/modules/site/cubit/site_cubit.dart';
 import 'package:forge/modules/admin/server/modules/site/router/site_arguments.dart';
 
@@ -11,6 +12,7 @@ class SiteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF7F7F7),
       appBar: const AppBarWidget(
         title: 'Sites',
         color: [Color(0xFF013c8b), Color(0xFF02a2d7)],
@@ -25,34 +27,23 @@ class SiteScreen extends StatelessWidget {
           }
           return GridView.builder(
             itemCount: state.sites.length,
+            padding: const EdgeInsets.all(20),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20,
             ),
             itemBuilder: (context, index) {
               if (!state.pending) {
                 final site = state.sites[index];
-                return GestureDetector(
+                return CardItem(
+                  title: site.name,
                   onTap: () => Navigator.pushNamed(
                     context,
                     '/server/detail/site/detail',
                     arguments: SiteDetailArguments(
                       serverId: serverId,
                       siteId: site.id,
-                    ),
-                  ),
-                  child: Card(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(site.name),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(Icons.code),
-                            Text(site.repository ?? site.name),
-                          ],
-                        ),
-                      ],
                     ),
                   ),
                 );
