@@ -43,6 +43,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
           borderRadius: borderRadius,
         ),
         child: Stack(
+          alignment: Alignment.center,
           children: [
             AppBar(
               backgroundColor: Colors.transparent,
