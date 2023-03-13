@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:forge/core/shared/appbar.dart';
 import 'package:forge/core/shared/widgets/table.dart';
 import 'package:forge/modules/admin/server/modules/database/cubit/database_cubit.dart';
 
@@ -10,8 +11,9 @@ class DatabaseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(' $serverId Databases'),
+      appBar: const AppBarWidget(
+        title: 'Databases',
+        color: [Color(0xFFff9600), Color(0xFFfe3500)],
       ),
       body: BlocBuilder<DatabaseCubit, DatabaseState>(
         bloc: context.read<DatabaseCubit>()..fetchAll(serverId: serverId),
