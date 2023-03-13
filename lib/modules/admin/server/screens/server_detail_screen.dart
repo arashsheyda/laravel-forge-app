@@ -88,6 +88,27 @@ class ServerDetailScreen extends StatelessWidget {
                 ),
                 gradient: [colorSecondary, colorPrimary],
                 splashColor: colorPrimary,
+                trailingItems: [
+                  PopupMenuItem(
+                    value: 0,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: const [
+                        Text('Create SSH'),
+                        SizedBox(width: 5),
+                        Icon(Icons.key),
+                      ],
+                    ),
+                    onTap: () => Future(
+                      () => Navigator.pushNamed(
+                        context,
+                        '/server/detail/key/create',
+                        arguments: serverId,
+                      ),
+                    ),
+                  ),
+                ],
                 onTap: () {
                   Navigator.pushNamed(
                     context,
