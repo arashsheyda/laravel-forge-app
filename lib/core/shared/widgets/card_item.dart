@@ -9,6 +9,7 @@ class CardItem extends StatelessWidget {
   final String? description;
   final Color? descriptionColor;
   final Widget? trailing;
+  final List<PopupMenuItem>? trailingItems;
   final Widget? leading;
   final VoidCallback? onTap;
 
@@ -26,6 +27,7 @@ class CardItem extends StatelessWidget {
     this.description,
     this.descriptionColor = Colors.grey,
     this.trailing,
+    this.trailingItems,
     this.leading,
     this.onTap,
     this.color,
@@ -60,13 +62,24 @@ class CardItem extends StatelessWidget {
             children: [
               Positioned(
                 right: 0,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.more_vert,
-                    color: subTitleColor,
-                  ),
-                ),
+                child: trailing ??
+                    PopupMenuButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: borderRadius,
+                      ),
+                      color: subTitleColor,
+                      position: PopupMenuPosition.under,
+                      itemBuilder: (context) {
+                        return trailingItems ?? [];
+                      },
+                    ),
+                // IconButton(
+                //   icon: Icon(
+                //     Icons.more_vert,
+                //     color: subTitleColor,
+                //   ),
+                //   onPressed: () {},
+                // ),
               ),
               leading != null
                   ? Positioned(
