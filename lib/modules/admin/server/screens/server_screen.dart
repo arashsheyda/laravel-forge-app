@@ -74,29 +74,34 @@ class ServerScreen extends StatelessWidget {
               child: BlocBuilder<ServerCubit, ServerState>(
                 bloc: context.read<ServerCubit>()..fetchServers(),
                 builder: (context, state) {
-                  return GridView.builder(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    itemCount: state.servers.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 1.1,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
+                  return RefreshIndicator(
+                    onRefresh: () async =>
+                        context.read<ServerCubit>().fetchServers(),
+                    child: GridView.builder(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      itemCount: state.servers.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 1.1,
+                        crossAxisSpacing: 20,
+                        mainAxisSpacing: 20,
+                      ),
+                      itemBuilder: (context, index) {
+                        var server = state.servers[index];
+                        return CardItem(
+                          title: state.servers[index].name,
+                          leading: Image.network(
+                            'https://cdn-icons-png.flaticon.com/512/188/188109.png',
+                          ),
+                          subtitle: server.region,
+                          description: server.ip_address,
+                          onTap: () => Navigator.of(context).pushNamed(
+                              '/server/detail',
+                              arguments: server.id),
+                        );
+                      },
                     ),
-                    itemBuilder: (context, index) {
-                      var server = state.servers[index];
-                      return CardItem(
-                        title: state.servers[index].name,
-                        leading: Image.network(
-                          'https://cdn-icons-png.flaticon.com/512/188/188109.png',
-                        ),
-                        subtitle: server.region,
-                        description: server.ip_address,
-                        onTap: () => Navigator.of(context)
-                            .pushNamed('/server/detail', arguments: server.id),
-                      );
-                    },
                   );
                 },
               ),
