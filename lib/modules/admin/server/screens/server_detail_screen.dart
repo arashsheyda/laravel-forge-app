@@ -117,6 +117,71 @@ class ServerDetailScreen extends StatelessWidget {
                   );
                 },
               ),
+              CardItem(
+                title: 'Backups',
+                subtitle: 'Manage your backups',
+                titleColor: Colors.white,
+                subTitleColor: Colors.white,
+                leading: Image.network(
+                  'https://cdn-icons-png.flaticon.com/512/4240/4240718.png',
+                  color: Colors.white,
+                ),
+                gradient: const [
+                  Color(0xFF7d4b3b),
+                  Color(0xFF4f2f25),
+                ],
+                splashColor: Colors.brown,
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/server/detail/backup',
+                    arguments: serverId,
+                  );
+                },
+              ),
+              CardItem(
+                title: 'PHP',
+                subtitle: 'Manage your PHP settings',
+                titleColor: Colors.white,
+                subTitleColor: Colors.white,
+                leading: Image.network(
+                  'https://cdn-icons-png.flaticon.com/512/2306/2306154.png',
+                ),
+                gradient: const [
+                  Color(0xFF777bb3),
+                  Color(0xFF484c89),
+                ],
+                splashColor: Colors.purple,
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/server/detail/php',
+                    arguments: serverId,
+                  );
+                },
+              ),
+              CardItem(
+                title: 'Nginx',
+                subtitle: 'Manage your Nginx settings',
+                titleColor: Colors.white,
+                subTitleColor: Colors.white,
+                leading: Image.network(
+                  'https://www.linux-destek.com/wp-content/Nginx-Logo-02.png',
+                  color: Colors.white,
+                ),
+                gradient: const [
+                  Color(0xFF009900),
+                  Color(0xFF146B26),
+                ],
+                splashColor: Colors.green,
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/server/detail/backup',
+                    arguments: serverId,
+                  );
+                },
+              ),
             ],
           ),
         );
