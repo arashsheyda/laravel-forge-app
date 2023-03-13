@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forge/core/shared/appbar.dart';
 import 'package:forge/core/shared/widgets/card_item.dart';
+import 'package:forge/core/styles/colors.dart';
 import 'package:forge/modules/admin/server/cubit/server_cubit.dart';
 
 class ServerDetailScreen extends StatelessWidget {
@@ -72,6 +73,25 @@ class ServerDetailScreen extends StatelessWidget {
                   Navigator.pushNamed(
                     context,
                     '/server/detail/site',
+                    arguments: serverId,
+                  );
+                },
+              ),
+              CardItem(
+                title: 'SSH Keys',
+                subtitle: 'Manage your SSH keys',
+                titleColor: Colors.white,
+                subTitleColor: Colors.white,
+                leading: Image.network(
+                  'https://cdn-icons-png.flaticon.com/512/9883/9883072.png',
+                  color: Colors.white,
+                ),
+                gradient: [colorSecondary, colorPrimary],
+                splashColor: colorPrimary,
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/server/detail/key',
                     arguments: serverId,
                   );
                 },
