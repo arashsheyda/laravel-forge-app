@@ -38,6 +38,7 @@ class SiteScreen extends StatelessWidget {
                 final site = state.sites[index];
                 return CardItem(
                   title: site.name,
+                  subtitle: site.php_version,
                   onTap: () => Navigator.pushNamed(
                     context,
                     '/server/detail/site/detail',
