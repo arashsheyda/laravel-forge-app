@@ -1,8 +1,9 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forge/core/shared/appbar.dart';
-import 'package:forge/core/shared/widgets/card_item.dart';
 import 'package:forge/core/styles/colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:forge/core/shared/widgets/card_item.dart';
 import 'package:forge/modules/admin/server/cubit/server_cubit.dart';
 
 class ServerDetailScreen extends StatelessWidget {
@@ -22,14 +23,147 @@ class ServerDetailScreen extends StatelessWidget {
           );
         }
         return Scaffold(
+          backgroundColor: const Color(0xFFF7F7F7),
           appBar: AppBarWidget(
             height: 300,
             title: state.server!.name,
+            color: [
+              colorThirdly,
+              colorPrimary,
+            ],
             borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(25),
               bottomRight: Radius.circular(25),
             ),
-            // TODO: add monitoring
+            shadow: const [
+              BoxShadow(
+                color: Colors.black38,
+                blurRadius: 13,
+                offset: Offset(0, 0),
+              ),
+            ],
+            child: Container(
+              margin: const EdgeInsets.only(top: 10),
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 70),
+                    height: 200,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black38,
+                          blurRadius: 13,
+                          offset: Offset(0, 0),
+                        ),
+                      ],
+                      gradient: const LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Color(0xFF1f1f1f),
+                          Color(0xFF010101),
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  Positioned(
+                    top: 50,
+                    left: 20,
+                    child: Row(
+                      children: [
+                        Container(
+                          height: 100,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.3),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                              child: Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: Image.network(
+                                  'https://cdn-icons-png.flaticon.com/128/900/900334.png',
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 20),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              state.server!.name,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              state.server!.region,
+                              style: TextStyle(
+                                color: Colors.white.withOpacity(0.7),
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              state.server!.provider,
+                              style: TextStyle(
+                                color: Colors.white.withOpacity(0.7),
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    top: -20,
+                    right: 50,
+                    child: Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.3),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: BackdropFilter(
+                                filter:
+                                    ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(10),
+                                  child: Icon(
+                                    Icons.edit,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
           body: GridView(
             padding: const EdgeInsets.all(20),
@@ -127,10 +261,7 @@ class ServerDetailScreen extends StatelessWidget {
                   'https://cdn-icons-png.flaticon.com/512/4240/4240718.png',
                   color: Colors.white,
                 ),
-                gradient: const [
-                  Color(0xFF7d4b3b),
-                  Color(0xFF4f2f25),
-                ],
+                gradient: const [Color(0xFF7d4b3b), Color(0xFF4f2f25)],
                 splashColor: Colors.brown,
                 onTap: () {
                   Navigator.pushNamed(
@@ -148,10 +279,7 @@ class ServerDetailScreen extends StatelessWidget {
                 leading: Image.network(
                   'https://cdn-icons-png.flaticon.com/512/2306/2306154.png',
                 ),
-                gradient: const [
-                  Color(0xFF777bb3),
-                  Color(0xFF484c89),
-                ],
+                gradient: const [Color(0xFF777bb3), Color(0xFF484c89)],
                 splashColor: Colors.purple,
                 onTap: () {
                   Navigator.pushNamed(
@@ -170,10 +298,7 @@ class ServerDetailScreen extends StatelessWidget {
                   'https://www.linux-destek.com/wp-content/Nginx-Logo-02.png',
                   color: Colors.white,
                 ),
-                gradient: const [
-                  Color(0xFF009900),
-                  Color(0xFF146B26),
-                ],
+                gradient: const [Color(0xFF009900), Color(0xFF146B26)],
                 splashColor: Colors.green,
                 onTap: () {
                   Navigator.pushNamed(
