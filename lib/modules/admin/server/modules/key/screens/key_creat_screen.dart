@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forge/core/shared/appbar.dart';
 import 'package:forge/core/styles/colors.dart';
+import 'package:forge/modules/admin/server/modules/key/cubit/key_cubit.dart';
+import 'package:forge/modules/admin/server/modules/key/models/create_key.dart';
 
 class KeyCreatScreen extends StatefulWidget {
   final int serverId;
@@ -12,13 +15,15 @@ class KeyCreatScreen extends StatefulWidget {
 
 class _KeyCreatScreenState extends State<KeyCreatScreen> {
   final _formKey = GlobalKey<FormState>();
+  final name = TextEditingController(text: 'My SSH Key');
+  final username = TextEditingController(text: 'forge');
+  final key = TextEditingController(text: 'test');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(
-        title: 'Create SSH Key',
-        color: [colorSecondary, colorPrimary],
+      appBar: AppBar(
+        title: const Text('Create SSH Key'),
       ),
       body: Form(
         key: _formKey,
@@ -27,7 +32,7 @@ class _KeyCreatScreenState extends State<KeyCreatScreen> {
           padding: const EdgeInsets.all(20),
           children: [
             TextFormField(
-              initialValue: 'My SSH Key',
+              controller: name,
               decoration: const InputDecoration(
                 labelText: 'Name',
                 hintText: 'My SSH Key',
@@ -36,7 +41,7 @@ class _KeyCreatScreenState extends State<KeyCreatScreen> {
             ),
             const SizedBox(height: 20),
             TextFormField(
-              initialValue: 'forge',
+              controller: username,
               decoration: const InputDecoration(
                 labelText: 'User',
                 hintText: 'forge',
@@ -45,7 +50,7 @@ class _KeyCreatScreenState extends State<KeyCreatScreen> {
             ),
             const SizedBox(height: 20),
             TextFormField(
-              initialValue: 'test',
+              controller: key,
               decoration: const InputDecoration(
                 labelText: 'Public Key',
                 hintText:
@@ -57,7 +62,16 @@ class _KeyCreatScreenState extends State<KeyCreatScreen> {
             ElevatedButton(
               onPressed: () {
                 final form = _formKey.currentState;
-                if (form != null && form.validate()) {}
+                if (form != null && form.validate()) {
+                  // TODO: test it, somehow the server not working for now
+                  context.read<KeyCubit>().createOne(
+                          dto: CreateKeyDto(
+                        serverId: widget.serverId,
+                        name: name.text,
+                        username: username.text,
+                        key: key.text,
+                      ));
+                }
               },
               child: const Text('Create'),
             ),

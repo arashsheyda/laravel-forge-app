@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:forge/modules/admin/server/modules/key/models/create_key.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:forge/modules/admin/server/modules/key/cubit/key_repository.dart';
 
@@ -16,6 +17,17 @@ class KeyCubit extends Cubit<KeyState> {
       emit(state.copyWith(keys: keys, pending: false));
     } catch (e) {
       rethrow;
+    }
+  }
+
+  Future<void> createOne({required CreateKeyDto dto}) async {
+    try {
+      emit(state.copyWith(pending: true));
+      final key = await repository.createOne(dto: dto);
+      emit(state.copyWith(keys: [...key], pending: false));
+    } catch (e) {
+      print(e);
+      // rethrow;
     }
   }
 }
