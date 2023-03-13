@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forge/core/shared/appbar.dart';
 import 'package:forge/modules/admin/server/modules/site/router/site_arguments.dart';
 
 class SiteDetailScreen extends StatelessWidget {
@@ -8,8 +9,9 @@ class SiteDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Site Detail ${arguments.siteId}'),
+      appBar: AppBarWidget(
+        title: 'Site ${arguments.siteId}',
+        color: const [Color(0xFF0083B0), Color(0xFF00B4DB)],
       ),
       body: GridView(
         padding: const EdgeInsets.all(10),
