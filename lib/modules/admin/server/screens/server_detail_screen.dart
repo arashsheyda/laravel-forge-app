@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:forge/core/shared/appbar.dart';
 import 'package:forge/core/shared/widgets/card_item.dart';
 import 'package:forge/modules/admin/server/cubit/server_cubit.dart';
 
@@ -20,37 +21,14 @@ class ServerDetailScreen extends StatelessWidget {
           );
         }
         return Scaffold(
-          appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(300),
-            child: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    Color(0xFF1f1f1f),
-                    Color(0xFF010101),
-                    // Color(0xFF64ddc9),
-                    // Color(0xFF18b69b),
-                    // Color(0xFF125251),
-                  ],
-                ),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(25),
-                  bottomRight: Radius.circular(25),
-                ),
-              ),
-              child: Stack(
-                children: [
-                  AppBar(
-                    backgroundColor: Colors.transparent,
-                    title: Text(state.server!.name),
-                    elevation: 0,
-                  ),
-                  // TODO: add monitoring
-                ],
-              ),
+          appBar: AppBarWidget(
+            height: 300,
+            title: state.server!.name,
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(25),
+              bottomRight: Radius.circular(25),
             ),
+            // TODO: add monitoring
           ),
           body: GridView(
             padding: const EdgeInsets.all(20),
@@ -69,10 +47,7 @@ class ServerDetailScreen extends StatelessWidget {
                   'https://cdn-icons-png.flaticon.com/512/2232/2232189.png',
                   color: Colors.white,
                 ),
-                gradient: const [
-                  Color(0xFFff9600),
-                  Color(0xFFfe3500),
-                ],
+                gradient: const [Color(0xFFff9600), Color(0xFFfe3500)],
                 splashColor: Colors.amber,
                 onTap: () {
                   Navigator.pushNamed(
