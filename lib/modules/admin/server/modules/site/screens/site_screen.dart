@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:forge/core/shared/appbar.dart';
 import 'package:forge/modules/admin/server/modules/site/cubit/site_cubit.dart';
 import 'package:forge/modules/admin/server/modules/site/router/site_arguments.dart';
 
@@ -10,8 +11,9 @@ class SiteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(' $serverId Sites'),
+      appBar: const AppBarWidget(
+        title: 'Sites',
+        color: [Color(0xFF013c8b), Color(0xFF02a2d7)],
       ),
       body: BlocBuilder<SiteCubit, SiteState>(
         bloc: context.read<SiteCubit>()..fetchSites(serverId: serverId),
