@@ -68,24 +68,26 @@ class CardItem extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                top: 15,
-                left: 15,
-                child: Container(
-                  height: 30,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        spreadRadius: 1,
-                        blurRadius: 7,
-                        offset: const Offset(0, 0),
+              leading != null
+                  ? Positioned(
+                      top: 15,
+                      left: 15,
+                      child: Container(
+                        height: 30,
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset: const Offset(0, 0),
+                            ),
+                          ],
+                        ),
+                        child: leading,
                       ),
-                    ],
-                  ),
-                  child: leading,
-                ),
-              ),
+                    )
+                  : const SizedBox.shrink(),
               Positioned(
                 bottom: 15,
                 left: 15,
