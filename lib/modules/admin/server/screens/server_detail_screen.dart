@@ -33,6 +33,7 @@ class ServerDetailScreen extends StatelessWidget {
           ),
           body: GridView(
             padding: const EdgeInsets.all(20),
+            physics: const BouncingScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 10,
