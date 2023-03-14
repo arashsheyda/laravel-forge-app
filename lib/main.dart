@@ -7,6 +7,8 @@ import 'package:forge/modules/admin/server/modules/database/cubit/database_cubit
 import 'package:forge/modules/admin/server/modules/database/cubit/database_repository.dart';
 import 'package:forge/modules/admin/server/modules/key/cubit/key_cubit.dart';
 import 'package:forge/modules/admin/server/modules/key/cubit/key_repository.dart';
+import 'package:forge/modules/admin/server/modules/log/cubit/log_cubit.dart';
+import 'package:forge/modules/admin/server/modules/log/cubit/log_repository.dart';
 import 'package:forge/modules/admin/server/modules/site/cubit/site_cubit.dart';
 import 'package:forge/modules/admin/server/modules/site/cubit/site_repository.dart';
 import 'package:forge/modules/admin/server/modules/site/modules/deployment/cubit/deployment_cubit.dart';
@@ -63,6 +65,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<DeploymentCubit>(
             create: (_) => DeploymentCubit(DeploymentRepository())),
         BlocProvider<KeyCubit>(create: (_) => KeyCubit(KeyRepository())),
+        BlocProvider<LogCubit>(create: (_) => LogCubit(LogRepository())),
       ],
       child: BlocBuilder<SettingCubit, SettingState>(
         builder: (BuildContext context, SettingState state) {
