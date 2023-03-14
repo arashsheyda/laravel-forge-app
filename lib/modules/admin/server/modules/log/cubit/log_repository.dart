@@ -6,9 +6,12 @@ import 'package:forge/modules/admin/server/modules/log/router/log_arguments.dart
 class LogRepository {
   Future fetchOne({required LogDetailArguments arguments}) async {
     try {
-      final response = await ApiService()
-          .dio
-          .get('/servers/${arguments.serverId}/logs?file=${arguments.file}');
+      final response = await ApiService().dio.get(
+        '/servers/${arguments.serverId}/logs',
+        queryParameters: {
+          'file': arguments.file,
+        },
+      );
       final log = response.data;
       return Log.fromJson(log);
       // ignore: unused_catch_clause
