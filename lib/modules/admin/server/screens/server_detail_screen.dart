@@ -5,6 +5,7 @@ import 'package:forge/core/styles/colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forge/core/shared/widgets/card_item.dart';
 import 'package:forge/modules/admin/server/cubit/server_cubit.dart';
+import 'package:forge/modules/admin/server/modules/log/router/log_arguments.dart';
 
 class ServerDetailScreen extends StatelessWidget {
   final int serverId;
@@ -309,10 +310,35 @@ class ServerDetailScreen extends StatelessWidget {
                     child: const Text('Nginx Error'),
                     onTap: () => Future(
                       () => Navigator.pushNamed(
-                        context,
-                        '/server/detail/key/log/detail',
-                        // TODO: Add arguments & screen
-                      ),
+                          context, '/server/detail/log/detail',
+                          arguments: LogDetailArguments(
+                            serverId: serverId,
+                            file: 'nginx-error',
+                          )),
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: 1,
+                    child: const Text('Nginx Access'),
+                    onTap: () => Future(
+                      () => Navigator.pushNamed(
+                          context, '/server/detail/log/detail',
+                          arguments: LogDetailArguments(
+                            serverId: serverId,
+                            file: 'nginx-access',
+                          )),
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: 2,
+                    child: const Text('SSH Auth'),
+                    onTap: () => Future(
+                      () => Navigator.pushNamed(
+                          context, '/server/detail/log/detail',
+                          arguments: LogDetailArguments(
+                            serverId: serverId,
+                            file: 'auth',
+                          )),
                     ),
                   ),
                 ],
