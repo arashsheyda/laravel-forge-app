@@ -3,7 +3,9 @@ import 'package:forge/modules/about/screens/about_screen.dart';
 import 'package:forge/modules/admin/server/modules/database/screens/database_screen.dart';
 import 'package:forge/modules/admin/server/modules/key/screens/key_creat_screen.dart';
 import 'package:forge/modules/admin/server/modules/key/screens/key_screen.dart';
-import 'package:forge/modules/admin/server/modules/log/log_screen.dart';
+import 'package:forge/modules/admin/server/modules/log/router/log_arguments.dart';
+import 'package:forge/modules/admin/server/modules/log/screens/log_detail_screen.dart';
+import 'package:forge/modules/admin/server/modules/log/screens/log_screen.dart';
 import 'package:forge/modules/admin/server/modules/site/modules/deployment/screens/deployment_screen.dart';
 import 'package:forge/modules/admin/server/modules/site/router/site_arguments.dart';
 import 'package:forge/modules/admin/server/modules/site/screens/site_detail_screen.dart';
@@ -82,6 +84,13 @@ class RouteGenerator {
         if (arguments is int) {
           return CupertinoPageRoute(
               builder: (_) => LogScreen(serverId: arguments));
+        }
+        return notFound(settings);
+
+      case '/server/detail/log/detail':
+        if (arguments is LogDetailArguments) {
+          return CupertinoPageRoute(
+              builder: (_) => LogDetailScreen(arguments: arguments));
         }
         return notFound(settings);
 
