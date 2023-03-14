@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:forge/modules/admin/server/modules/log/router/log_arguments.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:forge/modules/admin/server/modules/log/models/log.dart';
+import 'package:forge/modules/admin/server/modules/log/router/log_arguments.dart';
 import 'package:forge/modules/admin/server/modules/log/cubit/log_repository.dart';
 
 part 'log_state.dart';
