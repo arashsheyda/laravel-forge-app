@@ -169,14 +169,14 @@ class ServerDetailScreen extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             physics: const BouncingScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+              crossAxisCount: 3,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
             ),
             children: [
               CardItem(
                 title: 'Database',
-                subtitle: 'Manage your databases',
+                // subtitle: 'Manage your databases',
                 titleColor: Colors.white,
                 subTitleColor: Colors.white,
                 leading: Image.network(
@@ -195,7 +195,7 @@ class ServerDetailScreen extends StatelessWidget {
               ),
               CardItem(
                 title: 'Sites',
-                subtitle: 'Manage your websites',
+                // subtitle: 'Manage your websites',
                 titleColor: Colors.white,
                 subTitleColor: Colors.white,
                 leading: Image.network(
@@ -214,7 +214,7 @@ class ServerDetailScreen extends StatelessWidget {
               ),
               CardItem(
                 title: 'SSH Keys',
-                subtitle: 'Manage your SSH keys',
+                // subtitle: 'Manage your SSH keys',
                 titleColor: Colors.white,
                 subTitleColor: Colors.white,
                 leading: Image.network(
@@ -253,27 +253,8 @@ class ServerDetailScreen extends StatelessWidget {
                 },
               ),
               CardItem(
-                title: 'Backups',
-                subtitle: 'Manage your backups',
-                titleColor: Colors.white,
-                subTitleColor: Colors.white,
-                leading: Image.network(
-                  'https://cdn-icons-png.flaticon.com/512/4240/4240718.png',
-                  color: Colors.white,
-                ),
-                gradient: const [Color(0xFF7d4b3b), Color(0xFF4f2f25)],
-                splashColor: Colors.brown,
-                onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/server/detail/backup',
-                    arguments: serverId,
-                  );
-                },
-              ),
-              CardItem(
                 title: 'PHP',
-                subtitle: 'Manage your PHP settings',
+                // subtitle: 'Manage your PHP settings',
                 titleColor: Colors.white,
                 subTitleColor: Colors.white,
                 leading: Image.network(
@@ -291,7 +272,7 @@ class ServerDetailScreen extends StatelessWidget {
               ),
               CardItem(
                 title: 'Nginx',
-                subtitle: 'Manage your Nginx settings',
+                // subtitle: 'Manage your Nginx settings',
                 titleColor: Colors.white,
                 subTitleColor: Colors.white,
                 leading: Image.network(
@@ -300,6 +281,60 @@ class ServerDetailScreen extends StatelessWidget {
                 ),
                 gradient: const [Color(0xFF009900), Color(0xFF146B26)],
                 splashColor: Colors.green,
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/server/detail/backup',
+                    arguments: serverId,
+                  );
+                },
+              ),
+              CardItem(
+                title: 'Logs',
+                // subtitle: 'Check your server Logs',
+                titleColor: Colors.white,
+                subTitleColor: Colors.white,
+                leading: Image.network(
+                  'https://cdn-icons-png.flaticon.com/512/1960/1960242.png',
+                  color: Colors.white,
+                ),
+                gradient: const [
+                  Color(0xFFf8d323),
+                  Color(0xFFf8af23),
+                  Color(0xFFf8af23),
+                ],
+                trailingItems: [
+                  PopupMenuItem(
+                    value: 0,
+                    child: const Text('Nginx Error'),
+                    onTap: () => Future(
+                      () => Navigator.pushNamed(
+                        context,
+                        '/server/detail/key/log/detail',
+                        // TODO: Add arguments & screen
+                      ),
+                    ),
+                  ),
+                ],
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/server/detail/log',
+                    arguments: serverId,
+                  );
+                },
+              ),
+              CardItem(
+                title: 'Backups',
+                // subtitle: 'Manage your backups',
+                titleColor: Colors.white,
+                subTitleColor: Colors.white,
+                leading: Image.network(
+                  'https://cdn-icons-png.flaticon.com/512/4240/4240718.png',
+                  color: Colors.white,
+                ),
+                gradient: const [Color(0xFF7d4b3b), Color(0xFF4f2f25)],
+                splashColor: Colors.brown,
                 onTap: () {
                   Navigator.pushNamed(
                     context,
