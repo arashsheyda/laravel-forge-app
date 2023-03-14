@@ -313,7 +313,7 @@ class ServerDetailScreen extends StatelessWidget {
                           context, '/server/detail/log/detail',
                           arguments: LogDetailArguments(
                             serverId: serverId,
-                            file: 'nginx-error',
+                            file: 'nginx_error',
                           )),
                     ),
                   ),
@@ -325,7 +325,7 @@ class ServerDetailScreen extends StatelessWidget {
                           context, '/server/detail/log/detail',
                           arguments: LogDetailArguments(
                             serverId: serverId,
-                            file: 'nginx-access',
+                            file: 'nginx_access',
                           )),
                     ),
                   ),
