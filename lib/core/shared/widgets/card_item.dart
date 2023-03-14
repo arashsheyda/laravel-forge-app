@@ -102,7 +102,7 @@ class CardItem extends StatelessWidget {
                     )
                   : const SizedBox.shrink(),
               Positioned(
-                bottom: 15,
+                bottom: 10,
                 left: 15,
                 right: 15,
                 child: Column(
@@ -116,25 +116,33 @@ class CardItem extends StatelessWidget {
                         fontSize: 16,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    (subtitle != null && description != null)
+                        ? const SizedBox(height: 10)
+                        : const SizedBox.shrink(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          subtitle ?? '',
-                          style: TextStyle(
-                            color: subTitleColor,
-                            fontSize: 12,
-                          ),
-                        ),
+                        subtitle != null
+                            ? Flexible(
+                                child: Text(
+                                  subtitle!,
+                                  style: TextStyle(
+                                    color: subTitleColor,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              )
+                            : const SizedBox.shrink(),
                         const SizedBox(width: 5),
-                        Text(
-                          description ?? '',
-                          style: TextStyle(
-                            color: descriptionColor,
-                            fontSize: 12,
-                          ),
-                        ),
+                        description != null
+                            ? Text(
+                                description!,
+                                style: TextStyle(
+                                  color: descriptionColor,
+                                  fontSize: 12,
+                                ),
+                              )
+                            : const SizedBox.shrink(),
                       ],
                     ),
                   ],
