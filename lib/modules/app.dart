@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forge/core/shared/bottombar.dart';
 import 'package:forge/core/cubit/navigation/navigation_cubit.dart';
 import 'package:forge/modules/admin/server/screens/server_screen.dart';
+import 'package:forge/modules/doc/doc_screen.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -35,6 +36,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
 
   final pages = [
     const ServerScreen(),
+    const DocScreen(),
   ];
 
   final tabs = [
@@ -42,6 +44,11 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
       'index': 0,
       'icon': 'home',
       'label': 'Servers',
+    },
+    {
+      'index': 1,
+      'icon': 'home',
+      'label': 'Docs',
     },
   ];
 
