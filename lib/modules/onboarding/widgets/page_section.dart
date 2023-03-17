@@ -20,19 +20,24 @@ class PageSectionWidget extends StatelessWidget {
     return Column(
       children: [
         image != null
-            ? Image.asset(
-                image!,
+            ? SizedBox(
+                height: MediaQuery.of(context).size.height * 0.5,
+                width: double.infinity,
+                child: Image.asset(
+                  image!,
+                  fit: BoxFit.contain,
+                ),
               )
             : const SizedBox.shrink(),
         animation != null
             ? Storage.animation('$animation.json', width: 250, height: 250)
             : const SizedBox.shrink(),
-        const SizedBox(height: 100),
+        const SizedBox(height: 70),
         Text(
           title,
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 40,
+            fontSize: 35,
             fontWeight: FontWeight.w700,
             color: Theme.of(context).colorScheme.onBackground,
           ),
