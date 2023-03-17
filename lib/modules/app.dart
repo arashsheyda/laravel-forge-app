@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forge/core/shared/appbar.dart';
 import 'package:forge/core/styles/colors.dart';
 import 'package:forge/core/shared/drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,14 +58,9 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
     return Scaffold(
       key: _scaffoldKey,
       drawer: const DrawerWidget(),
-      appBar: AppBar(
-        backgroundColor: colorPrimary,
-        title: const Text('Laravel Forge'),
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () => _scaffoldKey.currentState!.openDrawer(),
-          icon: const Icon(Icons.menu),
-        ),
+      appBar: AppBarWidget(
+        title: 'Laravel Forge',
+        color: [colorPrimary, colorPrimary.withAlpha(255)],
         actions: [
           IconButton(
             onPressed: () => Navigator.pushNamed(context, '/user'),
@@ -72,16 +68,20 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
           ),
         ],
       ),
-      body: BlocBuilder<NavigationCubit, NavigationState>(
-        builder: (context, state) {
-          return TabBarView(
-            physics: const NeverScrollableScrollPhysics(),
-            controller: _tabCtrl,
-            children: pages,
-          );
-        },
+      body: Stack(
+        children: [
+          BlocBuilder<NavigationCubit, NavigationState>(
+            builder: (context, state) {
+              return TabBarView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: _tabCtrl,
+                children: pages,
+              );
+            },
+          ),
+          BottomBarWidget(tabController: _tabCtrl, tabs: tabs),
+        ],
       ),
-      bottomNavigationBar: BottomBarWidget(tabController: _tabCtrl, tabs: tabs),
     );
   }
 }
