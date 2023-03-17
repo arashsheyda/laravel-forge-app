@@ -6,12 +6,16 @@ import 'package:forge/modules/admin/server/modules/key/cubit/key_repository.dart
 part 'key_state.dart';
 part 'key_cubit.freezed.dart';
 
+var currentServer;
+
 class KeyCubit extends Cubit<KeyState> {
   KeyRepository repository;
   KeyCubit(this.repository) : super(KeyState.initial());
 
   Future<void> fetchAll({required int serverId}) async {
+    if (state.pending || currentServer == serverId) return;
     try {
+      currentServer = serverId;
       emit(state.copyWith(pending: true));
       final keys = await repository.fetchAll(serverId: serverId);
       emit(state.copyWith(keys: keys, pending: false));
