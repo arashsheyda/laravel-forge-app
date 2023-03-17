@@ -10,40 +10,45 @@ class TableWidget extends StatelessWidget {
     return ListView(
       scrollDirection: Axis.horizontal,
       children: [
-        DataTable(
-          dividerThickness: 0,
-          columns: [
-            for (var column in columns)
-              DataColumn(
-                label: Text(column),
-              ),
-          ],
-          rows: rows.map((item) {
-            var index = rows.indexOf(item);
-            return DataRow(
-              color: MaterialStateProperty.resolveWith<Color?>(
-                (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.selected)) {
-                    return Theme.of(context)
-                        .colorScheme
-                        .primary
-                        .withOpacity(0.08);
-                  }
-                  if (index.isEven) {
-                    return Colors.grey.withOpacity(0.1);
-                  }
-                  return null;
-                },
-              ),
-              cells: [
-                for (var column in columns)
-                  DataCell(
-                    Text(item[column].toString()),
-                    onTap: item['onTap'] ?? () {},
-                  ),
-              ],
-            );
-          }).toList(),
+        ConstrainedBox(
+          constraints: BoxConstraints(
+            minWidth: MediaQuery.of(context).size.width,
+          ),
+          child: DataTable(
+            dividerThickness: 0,
+            columns: [
+              for (var column in columns)
+                DataColumn(
+                  label: Text(column),
+                ),
+            ],
+            rows: rows.map((item) {
+              var index = rows.indexOf(item);
+              return DataRow(
+                color: MaterialStateProperty.resolveWith<Color?>(
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.selected)) {
+                      return Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withOpacity(0.08);
+                    }
+                    if (index.isEven) {
+                      return Colors.grey.withOpacity(0.1);
+                    }
+                    return null;
+                  },
+                ),
+                cells: [
+                  for (var column in columns)
+                    DataCell(
+                      Text(item[column].toString()),
+                      onTap: item['onTap'] ?? () {},
+                    ),
+                ],
+              );
+            }).toList(),
+          ),
         ),
       ],
     );
