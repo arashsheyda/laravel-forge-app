@@ -20,11 +20,15 @@ class ServerScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Servers',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                TextButton(
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed('/server/create'),
+                  child: const Text(
+                    'Create Server',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
                 Container(
