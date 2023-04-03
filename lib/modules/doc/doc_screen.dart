@@ -12,6 +12,7 @@ class DocScreen extends StatefulWidget {
 
 class _DocScreenState extends State<DocScreen> {
   late final WebViewController _controller;
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -40,7 +41,9 @@ class _DocScreenState extends State<DocScreen> {
             debugPrint('Page started loading: $url');
           },
           onPageFinished: (String url) {
-            debugPrint('Page finished loading: $url');
+            setState(() {
+              _isLoading = false;
+            });
           },
           onWebResourceError: (WebResourceError error) {
             debugPrint('''
@@ -84,7 +87,9 @@ Page resource error:
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WebViewWidget(controller: _controller),
+      body: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : WebViewWidget(controller: _controller),
     );
   }
 }
